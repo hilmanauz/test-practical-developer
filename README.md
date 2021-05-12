@@ -1,6 +1,6 @@
 # test-practical-developer
 
-screenshot: <br />
+screenshot: 
 1. marker-information.png
 2. marker.png
 
