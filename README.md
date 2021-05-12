@@ -1,9 +1,9 @@
 # test-practical-developer
 
-screenshot: \\
+screenshot: <br />
 1. marker-information.png
 2. marker.png
 
-microservices: \\
-image = microservices_app.png \\
+microservices: <br />
+image = microservices_app.png <br />
 description = description_microservices.txt
