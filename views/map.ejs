@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+ integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+ crossorigin=""></script>
+ <style>
+   body {
+     margin: 0;
+     padding: 0;
+   }
+   #mapid { height: 100vh;}
+ </style>
+  <title>Document</title>
+</head>
+<body>
+  <div id="mapid"></div>
+  <script>
+  var mymap = L.map('mapid', {
+    center: [-6.200000, 106.816666],
+    zoom: 12,
+    doubleClickZoom: false
+  });
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiaGlsbWFuYXV6IiwiYSI6ImNrb2pnNGlzZTAzcjUydW50M3JpdDI1OXkifQ.1lMEu5QfZFUqPAw0QZ-wyQ', {
+		maxZoom: 18,
+		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		id: 'mapbox/streets-v11',
+		tileSize: 512,
+		zoomOffset: -1
+	}).addTo(mymap);
+
+  var sunterAgung = [-6.137483, 106.863139];
+  var papanggo = [-6.1285, 106.8714];
+  var serdang = [-6.1587, 106.8606];
+  var sunterJaya = [-6.1529, 106.8722 ];  
+
+  var markAgung = L.marker(sunterAgung).addTo(mymap);
+  var markPapanggo = L.marker(papanggo).addTo(mymap);
+  var markSerdang = L.marker(serdang).addTo(mymap);
+  var markJaya = L.marker(sunterJaya).addTo(mymap);
+  
+  var i = 0;
+  var j = 0;
+  var k = 0;
+  var l = 0;
+
+  markAgung.on('click', e => onMapClick(e, 'sunterAgung'));
+  markPapanggo.on('click', e => onMapClick(e, 'papanggo'));
+  markSerdang.on('click', e => onMapClick(e, 'serdang'));
+  markJaya.on('click', e => onMapClick(e, 'sunterJaya'));
+
+  function onMapClick(e, mark) {
+    if(mark === 'sunterAgung'){
+      markAgung.bindPopup(`You clicked marker: ${i++}`)
+    } else if (mark === 'papanggo'){
+      markPapanggo.bindPopup(`You clicked marker: ${j++}`)
+    } else if (mark === 'serdang'){
+      markSerdang.bindPopup(`You clicked marker: ${k++}`)
+    } else if (mark === 'sunterJaya'){
+      markJaya.bindPopup(`You clicked marker: ${l++}`)
+    }
+  }
+  </script>
+</body>
+</html>
